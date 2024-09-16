@@ -14,13 +14,15 @@
 
 p {
     font-family: Arial, sans-serif;
-    font-size: 18px;
-    letter-spacing: 2.1px;
+    font-size: 1.125rem;
+    letter-spacing: 0.13rem;
 }
 
 .slider {
-    width: 1280px;
-    height: 768px;
+    max-width: 1024px;
+    max-height: 768px;
+    width: 90vw;
+    height: 67.5vw;
     overflow: hidden;
     background-color: black;
     margin: auto;
@@ -33,9 +35,8 @@ p {
     display: flex;
     margin: auto;
     transition: transform 0.9s ease-in-out;
-    width: 100%;
-    height: 80%;
-
+    width: 90%;
+    height: 72%;
 }
 
 .img-slider {
@@ -49,15 +50,16 @@ p {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 80px;
-    margin: 20px 80px;
+    margin: 0 6vw 4vw;
+    /* height: 80px; */
+    /* margin: 1vw 8vw; */
     flex-direction: row-reverse;
 }
 
 .button {
     display: flex;
-    gap: 20px;
-    padding: 20px;
+    gap: 1rem;
+    /* padding: 20px; */
 }
 
 .button_span {
@@ -72,7 +74,7 @@ p {
 
 .button_span:hover {
     border: 3px solid white;
-    background: rgb(145, 145, 144);
+    /* background: rgb(145, 145, 144); */
     transition: 0.3s;
 }
 
@@ -81,12 +83,17 @@ p {
     content: '';
     width: 30px;
     height: 30px;
+}
 
+.button_span.active {
+    border: 3px solid white;
+    background: rgb(145, 145, 144);
+    transition: 0.3s;
 }
 
 .comment {
     color: white;
-    padding-left: 20px;
+    /* padding-left: 20px; */
 }
 
 .comment p {
@@ -98,7 +105,19 @@ p {
 }
 
 @media (max-width: 568px) {
+
+    .slider {
+        /* max-height: auto; */
+        /* height: 60%; */
+    }
     .control-comment {
         flex-direction: column;
+        margin: 3vw 8vw;
+        height: 100%;
+    }
+
+    .comment {
+        /* display: flex; */
+        width: 100%;
     }
 }

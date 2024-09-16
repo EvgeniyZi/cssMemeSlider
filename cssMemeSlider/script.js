@@ -8,7 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
         imageWrapper.style.transform = `translateX(-${index * 100}%)`;
 
         comments.forEach(comment => comment.classList.remove('active'));
+        controls.forEach(comment => comment.classList.remove('active'));
         comments[index].classList.add('active');
+        controls[index].classList.add('active');
 
         imageIndex = index;
     }
