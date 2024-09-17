@@ -9,7 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         comments.forEach(comment => comment.classList.remove('active'));
         controls.forEach(comment => comment.classList.remove('active'));
-        comments[index].classList.add('active');
+        setTimeout(() => {
+            comments[index].classList.add('active');
+        }, 400);
         controls[index].classList.add('active');
 
         imageIndex = index;

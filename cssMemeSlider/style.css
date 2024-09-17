@@ -9,64 +9,75 @@
     font-family: "Arial";
     font-weight: normal;
     font-style: normal;
-    src: url("../cssMemeSlider/assets/fonts/arial/arial.ttf")
+    src: url("../cssMemeSlider/assets/fonts/arial/arial-regular.ttf")
 }
 
 p {
     font-family: Arial, sans-serif;
-    font-size: 1.125rem;
-    letter-spacing: 0.13rem;
+    font-size: 1.1rem;
+    letter-spacing: 0.15rem;
 }
 
-.slider {
+.up {
+    height: 3vw;
+}
+
+.container {
     max-width: 1024px;
-    max-height: 768px;
     width: 90vw;
-    height: 67.5vw;
-    overflow: hidden;
-    background-color: black;
-    margin: auto;
+    height: auto;
+    background-color: rgb(33, 33, 33);
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    margin: auto;
+    border-radius: 2vw;
+}
+
+.slider {
+    max-height: 768px;
+    margin: 30px 30px;
+    overflow: hidden;
+    display: flex;
+    border: 1px solid rgb(123, 120, 120);
+    box-shadow: 0 0 15px 3px rgb(64 64 64);
+    border-radius: 2vw;
 }
 
 .images {
     display: flex;
-    margin: auto;
-    transition: transform 0.9s ease-in-out;
-    width: 90%;
-    height: 72%;
+    transition: transform 0.3s ease-in-out;
+    height: auto;
 }
 
 .img-slider {
     min-width: 100%;
+    width: 100%;
     height: auto;
     object-fit: contain;
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(44, 44, 44);
 }
 
 .control-comment {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 0 6vw 4vw;
-    /* height: 80px; */
-    /* margin: 1vw 8vw; */
+    margin: 0 40px 30px;
+    height: auto;
     flex-direction: row-reverse;
+    min-height: 30px;
 }
 
 .button {
     display: flex;
-    gap: 1rem;
-    /* padding: 20px; */
+    gap: 0.7rem;
 }
 
 .button_span {
     display: inline-block;
     border-radius: 50%;
-    height: 25px;
-    width: 25px;
+    height: 20px;
+    width: 20px;
     border: 3px solid rgb(168, 164, 164);
     cursor: pointer;
     transition: 0.3s;
@@ -74,15 +85,15 @@ p {
 
 .button_span:hover {
     border: 3px solid white;
-    /* background: rgb(145, 145, 144); */
     transition: 0.3s;
 }
 
 .button_span::after {
     display: flex;
     content: '';
+    transform: translate(-25%, -40%);
     width: 30px;
-    height: 30px;
+    height: 60px;
 }
 
 .button_span.active {
@@ -93,31 +104,37 @@ p {
 
 .comment {
     color: white;
-    /* padding-left: 20px; */
 }
 
 .comment p {
-    display: none;
+    opacity: 0;
+    height: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease;
 }
 
 .comment p.active {
-    display: block;
+    opacity: 1;
+    height: auto;
+    visibility: visible;    
+}
+
+@media (max-width: 1024px) {
+    .control-comment {
+        margin: 0 4vw 30px;
+    }
 }
 
 @media (max-width: 568px) {
 
-    .slider {
-        /* max-height: auto; */
-        /* height: 60%; */
-    }
     .control-comment {
         flex-direction: column;
-        margin: 3vw 8vw;
-        height: 100%;
+        margin: 0 8vw 10vw 8vw;
+        height: auto;
+        gap: 30px;
     }
 
     .comment {
-        /* display: flex; */
         width: 100%;
     }
 }
