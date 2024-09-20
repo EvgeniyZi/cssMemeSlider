@@ -1,140 +1,195 @@
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-@font-face {
-    font-family: "Arial";
-    font-weight: normal;
-    font-style: normal;
-    src: url("../cssMemeSlider/assets/fonts/arial/arial-regular.ttf")
-}
-
-p {
+body {
     font-family: Arial, sans-serif;
-    font-size: 1.1rem;
-    letter-spacing: 0.15rem;
-}
-
-.up {
-    height: 3vw;
+    background-color: #dddada;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
 .container {
-    max-width: 1024px;
-    width: 90vw;
-    height: auto;
-    background-color: rgb(33, 33, 33);
+    background-color: rgb(39, 38, 38);
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    margin: auto;
-    border-radius: 2vw;
+    justify-content: center;
+    align-items: center;
+    max-width: 1024px;
+    width: 100%;
+    padding: 1.9rem;
 }
 
-.slider {
-    max-height: 768px;
-    margin: 30px 30px;
+.slider-box {
     overflow: hidden;
-    display: flex;
-    border: 1px solid rgb(123, 120, 120);
-    box-shadow: 0 0 15px 3px rgb(64 64 64);
-    border-radius: 2vw;
+    box-shadow: 0 0 15px rgba(64, 64, 64, 0.5);
+    border-radius: 15px;
+    background-color: #333;
 }
 
 .images {
-    display: flex;
-    transition: transform 0.3s ease-in-out;
-    height: auto;
+    transition: transform 0.5s ease-in-out;
 }
 
-.img-slider {
-    min-width: 100%;
+.slide {
+    display: flex;
+}
+
+img {
+    flex: none;
+    scroll-snap-align: start;
     width: 100%;
-    height: auto;
-    object-fit: contain;
-    background-color: rgb(44, 44, 44);
+    text-align: center;
+    border-bottom: 1px solid #444;
 }
 
-.control-comment {
+.control-box {
+    overflow: hidden;
+    width: 100%;
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    margin: 0 40px 30px;
-    height: auto;
-    flex-direction: row-reverse;
-    min-height: 30px;
+    padding-top: 1.9rem;
 }
 
-.button {
+.comments-slider {
+    width: 100%;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+}
+
+.comments-slider p {
     display: flex;
-    gap: 0.7rem;
-}
-
-.button_span {
-    display: inline-block;
-    border-radius: 50%;
-    height: 20px;
-    width: 20px;
-    border: 3px solid rgb(168, 164, 164);
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.button_span:hover {
-    border: 3px solid white;
-    transition: 0.3s;
-}
-
-.button_span::after {
-    display: flex;
-    content: '';
-    transform: translate(-25%, -40%);
-    width: 30px;
-    height: 60px;
-}
-
-.button_span.active {
-    border: 3px solid white;
-    background: rgb(145, 145, 144);
-    transition: 0.3s;
-}
-
-.comment {
+    flex-direction: column;
+    justify-content: center;
+    font-size: 1.7rem;
+    letter-spacing: 0.15rem;
+    line-height: 1.4;
     color: white;
-}
-
-.comment p {
+    text-align: left;
     opacity: 0;
-    height: 0;
-    visibility: hidden;
-    transition: opacity 0.4s ease;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.5s ease-in-out, max-height 0.5s ease-in-out;
 }
 
-.comment p.active {
+input[type="radio"] {
+    display: none;
+}
+
+#slide1:checked~.slider-box .images {
+    transform: translateX(0);
+}
+
+#slide2:checked~.slider-box .images {
+    transform: translateX(-100%);
+}
+
+#slide3:checked~.slider-box .images {
+    transform: translateX(-200%);
+}
+
+#slide4:checked~.slider-box .images {
+    transform: translateX(-300%);
+}
+
+#slide1:checked~.control-box .comments-slider .comment1 {
     opacity: 1;
-    height: auto;
-    visibility: visible;    
+    visibility: visible;
+    transition: opacity 0.5s ease-in-out, visibility 0s 0s;
+}
+
+#slide2:checked~.control-box .comments-slider .comment2 {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s ease-in-out, visibility 0s 0s;
+}
+
+#slide3:checked~.control-box .comments-slider .comment3 {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s ease-in-out, visibility 0s 0s;
+}
+
+#slide4:checked~.control-box .comments-slider .comment4 {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s ease-in-out, visibility 0s 0s;
+}
+
+.controls {
+    display: flex;
+    gap: 1rem;
+}
+
+.control {
+    max-width: 25px;
+    max-height: 25px;
+    width: 2.5vw;
+    height: 2.5vw;
+    background-color: #aaaaaa;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.control:hover {
+    background-color: #fff;
+}
+
+.control:active {
+    background-color: #fff;
+}
+
+#slide1:checked~.control-box .comments-slider .comment1,
+#slide2:checked~.control-box .comments-slider .comment2,
+#slide3:checked~.control-box .comments-slider .comment3,
+#slide4:checked~.control-box .comments-slider .comment4 {
+    opacity: 1;
+    max-height: 500px;
+    transition: opacity 0.5s ease-in-out, max-height 0.5s ease-in-out;
+}
+
+#slide1:checked~.control-box .controls label[for="slide1"],
+#slide2:checked~.control-box .controls label[for="slide2"],
+#slide3:checked~.control-box .controls label[for="slide3"],
+#slide4:checked~.control-box .controls label[for="slide4"] {
+    background-color: #575757; 
+    border: solid 3px rgb(255, 255, 255); 
 }
 
 @media (max-width: 1024px) {
-    .control-comment {
-        margin: 0 4vw 30px;
+    .container {
+        padding: 3%;
+    }
+
+    .control-box {
+        padding-top: 3%;
+    }
+
+    .comments-slider p {
+        font-size: 2.7vw;
+    }
+
+    .controls {
+        gap: 1.5vw;
     }
 }
 
 @media (max-width: 568px) {
 
-    .control-comment {
-        flex-direction: column;
-        margin: 0 8vw 10vw 8vw;
-        height: auto;
-        gap: 30px;
+    .control-box {
+        flex-direction: column-reverse;
+        row-gap: 10px
     }
 
-    .comment {
+    .comments-slider {
         width: 100%;
     }
 }
